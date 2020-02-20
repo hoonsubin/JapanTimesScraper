@@ -16,21 +16,16 @@ namespace JapanTimesScraper
         {
             Console.WriteLine("Please provide article tag");
             string input = Console.ReadLine();
-            string startDate = "2010-01-01";
-            string endDate = "2017-12-01";
+            string startDate = "2018-09-19";
+            //string endDate = "2017-12-01";
 
             const string dateFormat = "yyyy-MM-dd";
 
             var filteredArticles = FilterArticles(ArticleScraper.GetArticlesWithTag(input), DateTime.ParseExact(startDate, dateFormat,
-                CultureInfo.InvariantCulture), DateTime.ParseExact(endDate, dateFormat,
-                CultureInfo.InvariantCulture));
+                CultureInfo.InvariantCulture), DateTime.Now);
 
             SaveAsJson(filteredArticles);
 
-            foreach (var i in filteredArticles)
-            {
-                Console.WriteLine(i.pubDate);
-            }
 
             Console.WriteLine("Press a key to exit...");
             Console.ReadKey();
