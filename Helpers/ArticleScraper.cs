@@ -56,7 +56,7 @@ namespace JapanTimesScraper.Helpers
             // author is a nullable value
             string author = "none";
             if (authorNode != null)
-                author = authorNode.InnerText;
+                author = authorNode.InnerText.Replace("by ", "");
             var pubDateNode = document.DocumentNode.SelectSingleNode("//time/@datetime");
 
             // convert string to DateTime
