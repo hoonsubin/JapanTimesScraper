@@ -25,5 +25,25 @@ namespace JapanTimesScraper.Models
         public string content { get; set; }
 
         public string source { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            Article objAsArticle = obj as Article;
+            if (objAsArticle == null) return false;
+            else return Equals(objAsArticle);
+        }
+
+        public override int GetHashCode()
+        {
+            // convert URL string to a number
+            return source.GetHashCode();
+        }
+
+        public bool Equals(Article other)
+        {
+            if (other == null) return false;
+            return (this.source.Equals(other.source));
+        }
     }
 }
